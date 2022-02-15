@@ -5,9 +5,9 @@
 This is a minimal application sending emails with Gmail.
 It follows the instructions from the getting started guide, but also contains some extra examples:
 
-* [using template](src/main/java/org/acme/extra/ExtraMailResource.java) 
-* [using type safe template](src/main/java/org/acme/extra/TypeSafeMailResource.java)
-* [using attachments](src/main/java/org/acme/extra/ExtraMailResource.java)
+* [using template](src/main/java/com/vacancinated/extra/ExtraMailResource.java) 
+* [using type safe template](src/main/java/com/vacancinated/extra/TypeSafeMailResource.java)
+* [using attachments](src/main/java/com/vacancinated/extra/ExtraMailResource.java)
 
 ## Prerequisites
 
@@ -95,18 +95,18 @@ Before running the other demos, don't forget to edit the code to use your email 
 
 ### Using attachments
 
-* Code: [using attachments](src/main/java/org/acme/extra/ExtraMailResource.java)
+* Code: [using attachments](src/main/java/com/vacancinated/extra/ExtraMailResource.java)
 * Command: `curl -v http://localhost:8080/extra/attachment`
 
 ### Using template
 
-* Code: [using template](src/main/java/org/acme/extra/ExtraMailResource.java)
+* Code: [using template](src/main/java/com/vacancinated/extra/ExtraMailResource.java)
 * Template: [template](src/main/resources/templates/ExtraMailResource/hello.html)  
 * Command: `curl -v http://localhost:8080/extra/template`
 
 ### Using type-safe template
 
-* Code: [using type safe template](src/main/java/org/acme/extra/TypeSafeMailResource.java)
+* Code: [using type safe template](src/main/java/com/vacancinated/extra/TypeSafeMailResource.java)
 * Template: [template](src/main/resources/templates/TypeSafeMailResource/hello.html)
 * Command: `curl -v http://localhost:8080/type-safe`
 

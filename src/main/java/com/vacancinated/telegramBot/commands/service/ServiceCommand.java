@@ -1,4 +1,4 @@
-package org.acme.telegramBot.commands.service;
+package com.vacancinated.telegramBot.commands.service;
 
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
