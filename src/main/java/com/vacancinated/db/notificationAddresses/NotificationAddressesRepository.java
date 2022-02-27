@@ -17,4 +17,8 @@ public class NotificationAddressesRepository implements PanacheRepositoryBase<No
     public void deleteByUserId(String userId) {
         delete("user_id", userId);
     }
+
+    public NotificationAddress findByIdAndUserId(UUID id, String userId) {
+        return find("id = ?1 and user_id = ?2", id, userId).firstResult();
+    }
 }
