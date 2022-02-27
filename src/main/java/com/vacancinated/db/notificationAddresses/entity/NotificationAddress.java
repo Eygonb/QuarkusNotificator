@@ -1,6 +1,7 @@
 package com.vacancinated.db.notificationAddresses.entity;
 
 import com.vacancinated.notifications.entity.NotificationType;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -9,6 +10,12 @@ import java.util.UUID;
 @Table(name = "notification_addresses")
 public class NotificationAddress {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "user_id")
