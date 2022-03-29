@@ -1,0 +1,22 @@
+image: alpine
+
+stages:
+  - compile
+  - docker_build
+  - docker_push
+
+compile:
+  stage: compile
+  script:
+    - ./mvnw package
+
+docker_build:
+  stage: docker_build
+  script:
+    - docker build ./ -t registry.gitlab.com/vegaproject/notification-gateway
+
+docker_push:
+  stage: docker_push
+  script:
+    - docker login registry.gitlab.com
+    - docker push registry.gitlab.com/vegaproject/notification-gateway

@@ -7,11 +7,11 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/mailer-jvm .
+# docker build ./ -t notification-gateway
 #
 # Then run the container using:
 #
-# docker run -i --rm -p 8080:8080 quarkus/mailer-jvm
+# docker run -i --rm -p 8080:8080 notification-gateway
 #
 # If you want to include the debug port into your docker image
 # you will have to expose the debug port (default 5005) like this :  EXPOSE 8080 5050
@@ -26,10 +26,6 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3
 ARG JAVA_PACKAGE=java-11-openjdk-headless
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
-ENV BOT_NAME='VacancinatedBot'
-ENV BOT_TOKEN='5081691450:AAFq6xHYl7AgTqkapuDLPwz1H6GagPX1gVg'
-ENV MAILER_PASS='vegaProject_vacancinated'
-ENV MAILER_USER='vacancinated@gmail.com'
 # Install java and the run-java script
 # Also set up permissions for user `1001`
 RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
