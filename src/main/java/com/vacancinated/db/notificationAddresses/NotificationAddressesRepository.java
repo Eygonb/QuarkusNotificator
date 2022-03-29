@@ -1,7 +1,6 @@
 package com.vacancinated.db.notificationAddresses;
 
 import com.vacancinated.db.notificationAddresses.entity.NotificationAddress;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -20,5 +19,15 @@ public class NotificationAddressesRepository implements PanacheRepositoryBase<No
 
     public NotificationAddress findByIdAndUserId(UUID id, String userId) {
         return find("id = ?1 and user_id = ?2", id, userId).firstResult();
+    }
+
+    public NotificationAddress update(UUID id, NotificationAddress address) {
+        NotificationAddress entity = findById(id);
+
+        entity.setUserId(address.getUserId());
+        entity.setAddress(address.getAddress());
+        entity.setType(address.getType());
+
+        return entity;
     }
 }

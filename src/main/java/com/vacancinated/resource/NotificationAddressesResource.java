@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @Path("/addresses")
@@ -39,7 +40,7 @@ public class NotificationAddressesResource {
             String userId = jwt.getClaim("sub");
             NotificationAddress address = service.getByIdAndUserId(id, userId);
             if (address != null) {
-                return Response.ok().entity(address).build();
+                return Response.ok(address).build();
             }
             return Response.status(404).build();
         }
@@ -53,7 +54,7 @@ public class NotificationAddressesResource {
         if (checkJwt()) {
             address.setUserId(jwt.getClaim("sub"));
             NotificationAddress updatedAddress = service.update(id, address);
-            return Response.ok().entity(updatedAddress).build();
+            return Response.ok(updatedAddress).build();
         }
         return Response.status(401).build();
     }
@@ -66,6 +67,19 @@ public class NotificationAddressesResource {
             String userId = jwt.getClaim("sub");
             if (service.deleteWithUserId(id, userId)) {
                 return Response.ok().build();
+            }
+            return Response.status(404).build();
+        }
+        return Response.status(401).build();
+    }
+
+    @GET
+    public Response getByUserId() {
+        if (checkJwt()) {
+            String userId = jwt.getClaim("sub");
+            List<NotificationAddress> addresses = service.getByUserId(userId);
+            if (!addresses.isEmpty()) {
+                return Response.ok(addresses).build();
             }
             return Response.status(404).build();
         }
