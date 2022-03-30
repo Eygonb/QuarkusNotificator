@@ -1,4 +1,6 @@
 image: docker:latest
+services:
+  - docker:dind
 
 stages:
   - compile
@@ -12,6 +14,12 @@ compile:
     - chmod +x ./mvnw
   script:
     - ./mvnw package
+  artifacts:
+    paths:
+      - target/quarkus-app/lib/
+      - target/quarkus-app/*.jar
+      - target/quarkus-app/app/
+      - target/quarkus-app/quarkus/
 
 docker_build:
   stage: docker_build
