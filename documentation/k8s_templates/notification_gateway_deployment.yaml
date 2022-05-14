@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.notification_gateway_app_name }}
+  labels:
+    app: {{ .Values.notification_gateway_app_name }}
+spec:
+  replicas: {{ .Values.replicas.count }}
+  selector:
+    matchLabels:
+      app: {{ .Values.notification_gateway_app_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.notification_gateway_app_name }}
+    spec:
+      imagePullSecrets:
+      - name: gitlab-registry-key
+      containers:
+      - name: {{ .Values.notification_gateway_app_name }}
+        image: {{ .Values.containers.notifications_gateway_image }}
+        ports:
+        - containerPort: 8080
+        env:
+          - name: BOT_NAME
+            value: {{ .Values.bot.name }}
+          - name: BOT_TOKEN
+            value: {{ .Values.bot.token }}
+          - name: MAILER_USER
+            value: {{ .Values.smtp.mailer.user }}
+          - name: MAILER_PASS
+            value: {{ .Values.smtp.mailer.pass }}
+          - name: SMTP_HOST
+            value: {{ .Values.smtp.host }}
+          - name: SMTP_PORT
+            value: "587"
+          - name: KAFKA_URL
+            value: {{ .Values.kafka.url }}
+          - name: DB_URL
+            value: {{ .Values.db.url }}
+          - name: KEYCLOAK_ISSUER
+            value: {{ .Values.keycloak.issuer }}

@@ -13,7 +13,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
-@Path("/addresses")
+@Path("/notifications")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class NotificationAddressesResource {
@@ -28,7 +28,7 @@ public class NotificationAddressesResource {
         if (checkJwt()) {
             address.setUserId(jwt.getClaim("sub"));
             service.add(address);
-            return Response.created(URI.create("/addresses/" + address.getId().toString())).entity(address).build();
+            return Response.created(URI.create("/notifications/" + address.getId().toString())).entity(address).build();
         }
         return Response.status(401).build();
     }
