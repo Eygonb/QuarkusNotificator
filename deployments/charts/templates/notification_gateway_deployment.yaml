@@ -36,12 +36,12 @@ spec:
             value: "587"
           - name: KAFKA_URL
             value: {{ .Values.kafka.url }}
-          - name: DB_URL
-            value: {{ .Values.db.url }}
+          - name: NG_DB_URL
+            value: {{ .Values.ng.db.url }}
           - name: DB_USER
-            value: {{ .Values.db.user }}
+            value: {{ .Values.ng.db.user }}
           - name: DB_PASS
-            value: {{ .Values.db.pass }}
+            value: {{ .Values.ng.db.pass }}
           - name: KEYCLOAK_ISSUER
             value: {{ .Values.keycloak.issuer }}
           - name: UI_URL
