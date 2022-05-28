@@ -78,10 +78,7 @@ public class NotificationAddressesResource {
         if (checkJwt()) {
             String userId = jwt.getClaim("sub");
             List<NotificationAddress> addresses = service.getByUserId(userId);
-            if (!addresses.isEmpty()) {
-                return Response.ok(addresses).build();
-            }
-            return Response.status(404).build();
+            return Response.ok(addresses).build();
         }
         return Response.status(401).build();
     }
