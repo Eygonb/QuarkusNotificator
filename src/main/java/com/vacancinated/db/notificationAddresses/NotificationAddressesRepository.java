@@ -2,6 +2,7 @@ package com.vacancinated.db.notificationAddresses;
 
 import com.vacancinated.db.notificationAddresses.entity.NotificationAddress;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.smallrye.reactive.messaging.annotations.Blocking;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @ApplicationScoped
 public class NotificationAddressesRepository implements PanacheRepositoryBase<NotificationAddress, UUID> {
+    @Blocking
     public List<NotificationAddress> findByUserId(String userId) {
         return list("user_id", userId);
     }
