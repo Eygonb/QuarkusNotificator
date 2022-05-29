@@ -2,7 +2,7 @@ package com.vacancinated.db.notificationAddresses;
 
 import com.vacancinated.db.notificationAddresses.entity.NotificationAddress;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-import io.smallrye.reactive.messaging.annotations.Blocking;
+import io.smallrye.common.annotation.Blocking;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
