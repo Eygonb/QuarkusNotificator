@@ -22,7 +22,11 @@ public class TelegramNotificator extends Notificator {
         message.append(notification.getDescription());
         message.append("\nНачало: ");
         message.append(notification.getStartTime());
-        bot.sendMsg(address, message.toString());
+        try {
+            bot.sendMsg(address, message.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

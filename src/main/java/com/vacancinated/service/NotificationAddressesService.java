@@ -5,6 +5,7 @@ import com.vacancinated.db.notificationAddresses.entity.NotificationAddress;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -26,13 +27,7 @@ public class NotificationAddressesService {
     }
 
     public NotificationAddress update(UUID id, NotificationAddress address) {
-        NotificationAddress entity = repository.findById(id);
-
-        entity.setUserId(address.getUserId());
-        entity.setAddress(address.getAddress());
-        entity.setType(address.getType());
-
-        return entity;
+        return repository.update(id, address);
     }
 
     public boolean delete(UUID id) {
@@ -44,5 +39,9 @@ public class NotificationAddressesService {
             return delete(id);
         }
         return false;
+    }
+
+    public List<NotificationAddress> getByUserId(String userId) {
+        return repository.findByUserId(userId);
     }
 }

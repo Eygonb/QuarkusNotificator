@@ -18,7 +18,11 @@ public class MailNotificator extends Notificator {
     @Override
     @Blocking
     public void sendNotification(String address, Notification notification) {
-        mailer.send(Mail.withText(address, "Ahoy from Quarkus", "test"));
+        try {
+            mailer.send(Mail.withText(address, notification.getName(), notification.getDescription()));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
